@@ -64,7 +64,7 @@ class PartiesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_party
+  def set_party
       @party = Party.find(params[:id])
       ownership_check!(@party)
     end

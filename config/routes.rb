@@ -1,20 +1,21 @@
 Rails.application.routes.draw do
+  
+  get 'static/index'
+  get 'static/dashboard'
   devise_for :users
   resources  :parties
-  resources  :rsvps, :only => [:create]
-
+  resources  :rsvps
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   root 'static#index'
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
-
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
-
+ # match ':controller(/:action(/:id))', :via => :get
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
-
+  match ':controller(/:action(/:id))', :via => :get
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
 

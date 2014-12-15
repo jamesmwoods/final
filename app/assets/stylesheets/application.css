@@ -13,3 +13,14 @@
  *= require_tree .
  *= require_self
  */
+//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span2">
+      <!--Sidebar content-->
+    </div>
+    <div class="span10">
+      <!--Body content-->
+    </div>
+  </div>
+</div>

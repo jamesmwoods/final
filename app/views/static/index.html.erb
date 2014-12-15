@@ -1,1 +1,15 @@
-Hello. You should probably put something here.
+<% if @parties.blank? %>
+<H2> No parties found! Maybe you should add one.</h2>
+<%= link_to('Dashboard', {:action => 'dashboard'}) %>
+<% elsif !@parties.blank? %>
+<h2>Parties!</h2>
+<% @parties.each do |party| %>
+<%= link_to 'GOING', yes_rsvp_path(party) %>
+<%= link_to 'NOT GOING', no_rsvp_path(party) %>
+<li> <%= party.title %></li>
+  <li> <%= party.description %> </li></ul>
+<% end %>
+<% end %>
+
+
+<=link_to 'RSVP'
