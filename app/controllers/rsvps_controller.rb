@@ -16,7 +16,7 @@ class RsvpsController < ApplicationController
    def update
     respond_to do |format|
       if @rsvp.update(rsvp_params)
-        format.html { redirect_to @rsvp, notice: 'Rsvp was successfully updated.' }
+        format.html { redirect_to @rsvp, notice: 'Reservation was successfully updated.' }
         format.json { render :show, status: :ok, location: @rsvp }
       else
         format.html { render :edit }
@@ -34,9 +34,19 @@ class RsvpsController < ApplicationController
     @rsvp = Rsvp.find(params[:id])
       ownership_check!(@rsvp)
     end
+  
   def yes
-    @rsvp = execute('update rsvp set going = true where party_id = #{:party_id} and user = #{this.user_id}')
+    @rsvp = execute(update rsvp set going = true where party_id = #{:party_id} and user = #{this.user_id})
     end
   def no
     @rsvp = execute('update rsvp set going = false where party_id = #{:party_id} and user =  #{this.user_id} ')
 end
+    
+    def destroy
+    @rsvp.destroy
+    Rsvp.where(party_id=@party.id).destroy_all    
+    respond_to do |format|
+      format.html { redirect_to :back, notice: 'Reservation was successfully destroyed)' }      
+      format.json { head :no_content }
+    end
+  end

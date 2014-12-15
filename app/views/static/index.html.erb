@@ -1,15 +1,13 @@
+<% if !@party.blank? %>
+<h2>Parties!</h2>
+<% @parties.each do |party| %>
+<ol><li><%= link_to('&#10003.chr', {:action => 'rsvp/create'}) %></li>
+  <li><%= link_to('&#10006.chr', {:action => 'rsvp/destroy'})%></li>
+<li> <%= party.title %></li>
+  <li> <%= party.description %> </li></ul>
+<%end %>
+  <% end %>
 <% if @parties.blank? %>
 <H2> No parties found! Maybe you should add one.</h2>
 <%= link_to('Dashboard', {:action => 'dashboard'}) %>
-<% elsif !@parties.blank? %>
-<h2>Parties!</h2>
-<% @parties.each do |party| %>
-<%= link_to 'GOING', yes_rsvp_path(party) %>
-<%= link_to 'NOT GOING', no_rsvp_path(party) %>
-<li> <%= party.title %></li>
-  <li> <%= party.description %> </li></ul>
 <% end %>
-<% end %>
-
-
-<=link_to 'RSVP'
